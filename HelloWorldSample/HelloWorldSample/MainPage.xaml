@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="HelloWorldSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloWorldSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="wideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="narrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="InputPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="Button.Margin" Value="0,4,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel x:Name="ContentPanel">
+            <TextBlock Text="Hello, World !" />
+            <StackPanel x:Name="InputPanel" Orientation="Horizontal">
+                <TextBox x:Name="InputBox" Width="200" HorizontalAlignment="Left"/>
+                <Button x:Name="Button" Content="Say" Click="Button_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="OutputBlock"/>
+        </StackPanel>
+    </Grid>
+</Page>
